@@ -3,9 +3,9 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const id = Number(params.id);
+  const id = Number(context.params.id);
   const medicine = await prisma.medicine.findUnique({ where: { id } });
 
   if (!medicine) {
@@ -17,9 +17,9 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const id = Number(params.id);
+  const id = Number(context.params.id);
   const data = await req.json();
 
   const medicine = await prisma.medicine.update({
@@ -32,9 +32,9 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const id = Number(params.id);
+  const id = Number(context.params.id);
 
   await prisma.medicine.delete({
     where: { id },

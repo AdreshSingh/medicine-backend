@@ -121,7 +121,7 @@ export function MedicineTable({ onAddMedicine, onEditMedicine }: MedicineTablePr
       available: 'default',
       hidden: 'secondary',
       unavailable: 'destructive',
-      deleted: 'outline-solid'
+      deleted: 'outline'
     } as const;
 
     return (
@@ -338,7 +338,7 @@ export function MedicineTable({ onAddMedicine, onEditMedicine }: MedicineTablePr
                   return (
                     <Button
                       key={page}
-                      variant={pagination.page === page ? "default" : "outline-solid"}
+                      variant={pagination.page === page ? "default" : "outline"}
                       size="sm"
                       onClick={() => handlePageChange(page)}
                     >

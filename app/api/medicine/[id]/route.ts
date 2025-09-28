@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// export const dynamic = "force-dynamic"; //? not needed anymore as we removed export static.
-
 // GET /api/medicine/[id] - Get a single medicine by ID
 export async function GET(req: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id);
+  const id = Number(params.id);  // Make sure the id is a number
   const medicine = await prisma.medicine.findUnique({ where: { id } });
   if (!medicine) return NextResponse.json({ error: 'Not found' }, { status: 404 });
   return NextResponse.json(medicine);

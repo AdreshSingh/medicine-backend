@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-type Params = { params: { id: string } };
-
-export async function GET(req: NextRequest, { params }: Params) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   const id = Number(params.id);
   const medicine = await prisma.medicine.findUnique({ where: { id } });
 
@@ -14,7 +15,10 @@ export async function GET(req: NextRequest, { params }: Params) {
   return NextResponse.json(medicine);
 }
 
-export async function PUT(req: NextRequest, { params }: Params) {
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   const id = Number(params.id);
   const data = await req.json();
 
@@ -26,7 +30,10 @@ export async function PUT(req: NextRequest, { params }: Params) {
   return NextResponse.json(medicine);
 }
 
-export async function DELETE(req: NextRequest, { params }: Params) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   const id = Number(params.id);
 
   await prisma.medicine.delete({

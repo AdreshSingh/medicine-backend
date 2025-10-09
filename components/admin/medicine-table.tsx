@@ -3,8 +3,15 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Edit } from "lucide-react";
 
-export function MedicineTable() {
+interface MedicineTableProps {
+  onAddMedicine?: () => void;
+  onEditMedicine?: (medicine: any) => void;
+}
+
+export function MedicineTable({ onAddMedicine, onEditMedicine }: MedicineTableProps) {
   const [medicines, setMedicines] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +47,7 @@ export function MedicineTable() {
                 <TableHead>Tablets</TableHead>
                 <TableHead>Price Per Tab</TableHead>
                 <TableHead>Price Per Strip</TableHead>
+                <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -64,6 +72,13 @@ export function MedicineTable() {
                     <TableCell>{medicine.tablets}</TableCell>
                     <TableCell>${medicine.pricePerTab.toFixed(2)}</TableCell>
                     <TableCell>${medicine.pricePerStrip.toFixed(2)}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <Button size="sm" variant="ghost" onClick={() => onEditMedicine?.(medicine)}>
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
                   </TableRow>
                 ))
               )}

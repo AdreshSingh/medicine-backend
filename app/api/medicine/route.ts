@@ -3,6 +3,9 @@ import { prisma } from '@/lib/prisma';
 
 // export const dynamic = "force-dynamic"; //? not needed anymore as we removed export static.
 
+// ? for nodejs runtime
+export const runtime = 'nodejs';
+
 // GET /api/medicine - List all medicines
 export async function GET() {
   const medicines = await prisma.medicine.findMany();

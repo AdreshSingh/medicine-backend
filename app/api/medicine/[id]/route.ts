@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
+// ? for nodejs runtime
+export const runtime = 'nodejs';
+
 // GET /api/medicine/[id] - Get a single medicine by ID
 export async function GET(
   req: Request, 

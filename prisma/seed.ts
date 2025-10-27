@@ -1,4 +1,8 @@
-import { PrismaClient, Prisma } from "../app/generated/prisma";
+//! for local developement
+// import { PrismaClient, Prisma } from "../app/generated/prisma";
+
+//! for vercel deployment
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {

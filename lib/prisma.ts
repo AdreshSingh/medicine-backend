@@ -1,4 +1,8 @@
-import {PrismaClient} from '../app/generated/prisma'
+//! for local developement
+// import { PrismaClient } from "../app/generated/prisma";
+
+//! for vercel deployment
+import { PrismaClient } from "@prisma/client";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
